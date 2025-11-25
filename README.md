@@ -2,12 +2,8 @@
 Welcome to my personal portfolio website built with **React.js**, **Framer Motion**, and **modern UI design** principles.
 It showcases my work, projects, skills, and journey as a developer passionate about **AI, ML, and Web Technologies**.
 
-🌐 **Website:** [Portfolio](https://shubham-portfolio.netlify.app/)
+🌐 **Website:** [Portfolio](https://github.com/Shubhamsingh2405/Portfolio.git)
 
-🖼️ **Screenshots**
-<img width="1902" height="994" alt="Screenshot 2025-11-03 232447" src="https://github.com/user-attachments/assets/6f78ceb0-363c-41e8-9eb9-a26fa814e8ac" />
-<img width="1894" height="992" alt="image" src="https://github.com/user-attachments/assets/8a6eeff0-3ebc-446c-a1ac-5f1a02279ac8" />
-<img width="1903" height="1044" alt="Screenshot 2025-11-04 153204" src="https://github.com/user-attachments/assets/355b1c4c-83e6-4465-9081-bff34bb3ad3b" />
 ---
 
 ## 🚀 Features
@@ -30,20 +26,20 @@ It showcases my work, projects, skills, and journey as a developer passionate ab
 | **Animation**       | Framer Motion                            |
 | **Contact Form**    | EmailJS                                  |
 | **Version Control** | Git & GitHub                             |
-| **Deployment**      | Vercel / Netlify                         |
+| **Deployment**      | GitHub Pages / GitHub Actions            |
 
 ---
 
-## ⚙️ Setup Instructions
+## ⚙️ Local Development
 
 To run this project locally:
 
 ```bash
 # 1️⃣ Clone the repository
-git clone https://github.com/Shubhamsingh2405/Shubham-Portfolio.git
+git clone https://github.com/Shubhamsingh2405/Portfolio.git
 
-# 2️⃣ Navigate to project directory
-cd Shubham-Portfolio
+# 2️⃣ Navigate to project directory (folder name may vary)
+cd Shubham-Portfolio-main
 
 # 3️⃣ Install dependencies
 npm install
@@ -53,6 +49,19 @@ npm run dev
 ```
 
 Now open [http://localhost:5173](http://localhost:5173) in your browser 🚀
+
+---
+
+## 📦 Production Build
+
+To create an optimized build for deployment:
+
+```bash
+npm run build       # Build for production
+npm run preview     # (Optional) Preview the production build locally
+```
+
+This generates a static production build in the `dist/` folder, ready to be deployed to GitHub Pages (or any other static host).
 
 ---
 
@@ -68,10 +77,83 @@ If you'd like to collaborate or just say hi 👋, feel free to reach out!
 
 ---
 
-## 🌟 Deployment
+## 🌟 Deploying to GitHub Pages
 
-Deployed seamlessly on **Netlify** for continuous integration and fast CDN delivery.
-Every push to the `main` branch triggers an automatic rebuild and deployment.
+GitHub Pages can serve the static files generated in the `dist/` folder. Make sure your repository is at `https://github.com/Shubhamsingh2405/Portfolio.git`.
+
+### 1. Configure Vite for GitHub Pages (only if deploying to a project subpath)
+
+If the site will be hosted at `https://Shubhamsingh2405.github.io/Portfolio/`, set the `base` option in `vite.config.mjs`:
+
+```js
+export default defineConfig({
+  plugins: [react()],
+  base: '/Portfolio/',
+});
+```
+
+Skip this step if you deploy to a custom domain or the root `Shubhamsingh2405.github.io`.
+
+### 2. Build locally
+
+```bash
+npm run build
+```
+
+### 3. Deploy with GitHub Actions (recommended)
+
+1. Commit and push your code to the `main` branch of `Portfolio.git`.
+2. In GitHub, go to **Settings → Pages → Build and deployment → Source** and choose **GitHub Actions**.
+3. Select the **"Deploy Vite"** workflow or create `.github/workflows/deploy.yml` with:
+
+```yaml
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
+```
+
+4. The workflow publishes your site automatically to `https://Shubhamsingh2405.github.io/Portfolio/` after each push.
+
+### 4. Manual deployment alternative
+
+If you prefer manual deployment without Actions:
+
+```bash
+npm run build
+git add dist -f
+git commit -m "Deploy to GitHub Pages"
+git subtree push --prefix dist origin gh-pages
+```
+
+Then set **Settings → Pages → Source** to `gh-pages` / `root`.
 
 ---
 
