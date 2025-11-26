@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const withBase = (path) => `${import.meta.env.BASE_URL}${path}`;
+
 // ✅ Certificates data (added URLs for View button)
 const CERTS = {
   tech: [
@@ -8,43 +10,43 @@ const CERTS = {
       title: "AI Foundation",
       org: "Oracle",
       date: "2025",
-      img: "/certs/AI_Foundation.png",
-      link: "/certs/AI_Foundation.png",
+      img: withBase("certs/AI_Foundation.png"),
+      link: withBase("certs/AI_Foundation.png"),
     },
     {
       title: "Data Science",
       org: "Oracle",
       date: "2025",
-      img: "/certs/Data_Science.png",
-      link: "/certs/Data_Science.png",
+      img: withBase("certs/Data_Science.png"),
+      link: withBase("certs/Data_Science.png"),
     },
     {
       title: "DSA With C++",
       org: "CSE Pathshala",
       date: "2025",
-      img: "/certs/DSA.png",
-      link: "/certs/DSA.png",
+      img: withBase("certs/DSA.png"),
+      link: withBase("certs/DSA.png"),
     },
     {
       title: "Cloud Computing",
       org: "NPTEL",
       date: "2025",
-      img: "/certs/Cloud.png",
-      link: "/certs/cloud.png",
+      img: withBase("certs/Cloud.png"),
+      link: withBase("certs/Cloud.png"),
     },
     {
       title: "Web3 Hackathon",
       org: "BlockseBlock",
       date: "2024",
-      img: "/certs/Hackathon.png",
-      link: "/certs/Hackathon.png",
+      img: withBase("certs/Hackathon.png"),
+      link: withBase("certs/Hackathon.png"),
     },
     {
       title: "Responsive Web Design",
       org: "FreeCodeCamp",
       date: "2023",
-      img: "/certs/Web.png",
-      link: "/certs/Web.png",
+      img: withBase("certs/Web.png"),
+      link: withBase("certs/Web.png"),
     },
   ],
 };

@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+const resumePdf = `${import.meta.env.BASE_URL}resume.pdf`;
+
 export default function Resume() {
   return (
     <section className="container" style={{ padding: "60px 0" }}>
@@ -231,7 +233,7 @@ export default function Resume() {
           }}
         >
           <iframe
-            src="/resume.pdf"
+            src={resumePdf}
             title="Shubham Kumar Singh Resume"
             style={{
               width: "100%",
@@ -244,7 +246,7 @@ export default function Resume() {
 
         {/* Download Button */}
         <motion.a
-          href="/resume.pdf"
+          href={resumePdf}
           download
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}

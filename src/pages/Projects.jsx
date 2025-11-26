@@ -2,11 +2,13 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Github, ExternalLink } from 'lucide-react'
 
+const withBase = (path) => `${import.meta.env.BASE_URL}${path}`
+
 const PROJECTS = [
   {
     title: '💧 AI-Based Water Quality & Encroachment Analysis',
     desc: 'OpenCV based water quality and encroachment analysis using machine learning and computer vision.',
-    ss: '/waterlogo.png',
+    ss: withBase('waterlogo.png'),
     tech: ['Python', 'Scikit-learn', 'OpenCV', 'Streamlit'],
     live: 'https://water-purity.streamlit.app/',
     code: 'https://github.com/Shubhamsingh2405/'
@@ -14,7 +16,7 @@ const PROJECTS = [
   {
   title: '🧠 Intelligent Financial Planning Chatbot',
   desc: 'Interactive chatbot for personal budget planning and financial management, enabling users to track expenses and set savings goals.',
-  ss: '/chatbot.png',
+  ss: withBase('chatbot.png'),
   tech: ['Python', 'Gemini API', 'scikit-learn'],
   live: 'https://beep-ai-chatbot.onrender.com/',
   code: 'https://github.com/Shubhamsingh2405/'
@@ -22,7 +24,7 @@ const PROJECTS = [
   {
   title: '💼 Portfolio Website',
   desc: 'A modern and responsive portfolio built with React and Framer Motion, showcasing projects, skills, and achievements with smooth animations and interactive UI.',
-  ss: '/portfolioBlack.png',
+  ss: withBase('portfolioBlack.png'),
   tech: ['React', 'Framer Motion', 'Tailwind CSS'],
   live: '#',
   code: 'https://github.com/Shubhamsingh2405/'

@@ -1,13 +1,15 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-// 🖼️ Public Assets (use absolute paths in Vite)
-const photo = '/photo.jpg'
-const githubLogo = '/github.png'
-const linkedinLogo = '/linkedin.png'
-const gmailLogo = '/gmail.png'
-const whatsappLogo = '/whatsapp.png'
-const instagramLogo = '/insta.png'
+const withBase = (path) => `${import.meta.env.BASE_URL}${path}`
+
+// 🖼️ Public assets resolved against the GitHub Pages base path
+const photo = withBase('photo.jpg')
+const githubLogo = withBase('github.png')
+const linkedinLogo = withBase('linkedin.png')
+const gmailLogo = withBase('gmail.png')
+const whatsappLogo = withBase('whatsapp.png')
+const instagramLogo = withBase('insta.png')
 
 export default function Home() {
   const professions = [

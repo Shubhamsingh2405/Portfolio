@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
 
-// Public assets should be referenced by absolute URL paths instead of importing from /public
-const githubLogo = "/github.png";
-const linkedinLogo = "/linkedin.png";
-const gmailLogo = "/gmail.png";
-const whatsappLogo = "/whatsapp.png";
-const instagramLogo = "/insta.png";
+const withBase = (path) => `${import.meta.env.BASE_URL}${path}`;
+
+// Public assets resolved with the GitHub Pages base path
+const githubLogo = withBase("github.png");
+const linkedinLogo = withBase("linkedin.png");
+const gmailLogo = withBase("gmail.png");
+const whatsappLogo = withBase("whatsapp.png");
+const instagramLogo = withBase("insta.png");
 
 export default function Contact() {
   const [form, setForm] = useState({
