@@ -61,7 +61,10 @@ npm run build       # Build for production
 npm run preview     # (Optional) Preview the production build locally
 ```
 
-This generates a static production build in the `dist/` folder, ready to be deployed to GitHub Pages (or any other static host).
+This generates a static production build in the `dist/` folder. The Vite config now reads the `DEPLOY_BASE` environment variable:
+
+- Default (`DEPLOY_BASE` unset) → `/` (perfect for Netlify, Vercel, etc.)
+- GitHub Pages workflow sets `DEPLOY_BASE=/Portfolio/` during the build so assets load correctly from the subpath.
 
 ---
 
@@ -154,6 +157,25 @@ git subtree push --prefix dist origin gh-pages
 ```
 
 Then set **Settings → Pages → Source** to `gh-pages` / `root`.
+
+---
+
+## 🚀 Deploying to Netlify
+
+Netlify reads build settings from `netlify.toml` (already added) and automatically handles SPA routing.
+
+- **Build command**: `npm run build`
+- **Publish directory**: `dist`
+- **Node version**: `18` (declared in `netlify.toml`)
+- Automatic fallback: `/* → /index.html` for client-side routing
+
+### Steps
+
+1. Push your latest code to GitHub.
+2. Log in to [Netlify](https://app.netlify.com/), click **Add new site → Import an existing project**.
+3. Choose your `Portfolio` repository.
+4. Netlify will detect the settings from `netlify.toml`. Confirm and deploy.
+5. Every push to `main` will trigger a fresh build and deployment.
 
 ---
 

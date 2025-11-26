@@ -1,11 +1,9 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
+const base = process.env.DEPLOY_BASE || '/';
+
 export default defineConfig({
   plugins: [react()],
-  base: '/Portfolio/',
-<<<<<<< HEAD
+  base,
 });
-=======
-});
->>>>>>> dd80165ace912c4fc74e305ad00af17c832ff2f5
